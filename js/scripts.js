@@ -36,10 +36,10 @@ for(i=0; i< repository.length; i++)
 {
 if (repository[i].height < 1.1 )
  {
-  document.write(repository[i].name + "(" + repository[i].height + ")") + "<br>");
+  document.write(repository[i].name + "(" + "Height" + ":"  + repository[i].height + ")" + "<br>");
  }
  else
   {
-   document.write(repository[i].name + "(" + repository[i].height + ")" + "-" + "Wow, that's big!" + "<br>")
+   document.write(repository[i].name + "(" + "Height" + ":" + repository[i].height + ")" + "-" + "Wow, that's big!" + "<br>")
  }
 }

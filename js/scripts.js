@@ -32,7 +32,7 @@ var repository= [
 ]
 
 
-for(i=0; i< repository.length; i++)
+/*for(i=0; i< repository.length; i++)
 {
 if (repository[i].height < 1.1 )
  {
@@ -42,4 +42,9 @@ if (repository[i].height < 1.1 )
   {
    document.write(repository[i].name + "(" + "Height" + ":" + repository[i].height + ")" + "-" + "Wow, that's big!" + "<br>")
  }
-}
+}*/
+
+
+  respiratory.forEach(function(detail){
+  document.write(Object.values(detail) + "</br>");
+}); 

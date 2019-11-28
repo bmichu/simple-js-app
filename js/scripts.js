@@ -45,6 +45,6 @@ if (repository[i].height < 1.1 )
 }*/
 
 
-  respiratory.forEach(function(detail){
+  repository.forEach(function(detail){
   document.write(Object.values(detail) + "</br>");
-}); 
+});

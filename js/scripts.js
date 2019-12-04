@@ -1,3 +1,5 @@
+var pokemonRepository = function(){
+
 var repository= [
 {
   name:"Venusaur",
@@ -29,7 +31,7 @@ var repository= [
   height:1,
   type:["water"]
 }
-]
+];
 
 
 /*for(i=0; i< repository.length; i++)
@@ -45,6 +47,23 @@ if (repository[i].height < 1.1 )
 }*/
 
 
-  repository.forEach(function(detail){
-  document.write(Object.values(detail) + "</br>");
+  function add(pokemon) {
+    repository.push(pokemon);
+  }
+  function getAll()  {
+    return repository;
+  }
+
+  return {
+    add: add,
+    getAll: getAll
+  };
+}();
+
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({ name: "Pidgeot"});
+
+
+pokemonRepository.getAll ().forEach(function(repository){
+  document.write((repository.name)  + "</br>");
 });

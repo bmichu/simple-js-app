@@ -1,8 +1,25 @@
 body{text-align: center;
 padding:50px;
-font-family: 'lato', sans-serif;
-backgroud: white;
-color: red
+font-family: 'Lato', sans-serif;
+background-color: #dcdfe0;
+color:#469e7c;
+
+}
+h1{text-align: center;
+  color: #039dfc;
+  font-weight: bold;
 
 
+}
+
+.my-button{
+  border:2px solid salmon;
+  border-radius: 12px;
+  padding: 20px;
+  display: inline-block;
+  cursor:pointer;
+
+}
+.pokemon-list{
+  list-style-type: none;
 }

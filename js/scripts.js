@@ -1,5 +1,4 @@
 var pokemonRepository = function(){
-
 var repository= [
 {
   name:"Venusaur",
@@ -33,37 +32,58 @@ var repository= [
 }
 ];
 
+function addListItem(repository){
+  var button = document.createElement("button");
+  var li = document.createElement("li");
+  button.innerText = repository.name;
+  button.classList.add("my-button");
+  li.appendChild(button);
+  ul.appendChild(li);
+  button.addEventListener("click",function(event){
+    showDetails(repository.name);
+  });
+}
 
-/*for(i=0; i< repository.length; i++)
-{
-if (repository[i].height < 1.1 )
- {
-  document.write(repository[i].name + "(" + "Height" + ":"  + repository[i].height + ")" + "<br>");
+function showDetails(repository){
+console.log(repository);
  }
- else
-  {
-   document.write(repository[i].name + "(" + "Height" + ":" + repository[i].height + ")" + "-" + "Wow, that's big!" + "<br>")
- }
-}*/
-
-
   function add(pokemon) {
-    repository.push(pokemon);
+     repository.push(pokemon);
   }
-  function getAll()  {
-    return repository;
-  }
+   function getAll() {
+     return repository;
+   }
 
-  return {
+return {
     add: add,
-    getAll: getAll
-  };
-}();
+    getAll: getAll,
+   addListItem: addListItem
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.add({ name: "Pidgeot"});
+};
+}
+();
+//console.log(pokemonRepository.getAll());
+//pokemonRepository.add({ name: "Pidgeot" });
+var ul = document.querySelector(".pokemon-list");
 
-
-pokemonRepository.getAll ().forEach(function(repository){
-  document.write((repository.name)  + "</br>");
+pokemonRepository.getAll().forEach(function(repository){
+pokemonRepository.addListItem(repository);
 });
+
+//var button = document.querySelectorAll("button");
+//for(var i=0; i< button.length; i++){
+//button[i].addEventListener("click",
+//function(repository){
+//console.log(repository.name);
+//});
+
+
+//==== CHANGE  OF POKEMON  NAME COLOR ONCE CLICKED===
+
+/*var button = document.querySelectorAll("button");
+for(var i=0; i< button.length; i++){
+button[i].addEventListener("click",
+function(){
+this.style.color = "green";
+});
+}*/

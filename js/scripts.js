@@ -1,89 +1,75 @@
-var pokemonRepository = function(){
-var repository= [
-{
-  name:"Venusaur",
-  weight:100,
-  height:2,
-  type:["grass","poison"]
-},
-{
-  name:"Ivysaur",
-  weight:13,
-  height:1,
-  type:["grass","poison"]
-},
-{
-  name:"Bulbasaur",
-  weight:6.9,
-  height:0.7,
-  type:["grass","poison"]
-},
-{
-  name:"Charmeleon",
-  weight:19,
-  height:1.1,
-  type:["fire"]
-},
-{
-  name:"Wartortle",
-  weight:22.5,
-  height:1,
-  type:["water"]
-}
-];
+var pokemonRepository = (function() {
+    var repository = [];
+    var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    var ul = document.querySelector(".pokemon-list");
 
-function addListItem(repository){
-  var button = document.createElement("button");
-  var li = document.createElement("li");
-  button.innerText = repository.name;
-  button.classList.add("my-button");
-  li.appendChild(button);
-  ul.appendChild(li);
-  button.addEventListener("click",function(event){
-    showDetails(repository.name);
-  });
-}
+    function add(pokemon) {
+        repository.push(pokemon);
+    }
 
-function showDetails(repository){
-console.log(repository);
- }
-  function add(pokemon) {
-     repository.push(pokemon);
-  }
-   function getAll() {
-     return repository;
-   }
+    function getAll() {
+        return repository;
+    }
 
-return {
-    add: add,
-    getAll: getAll,
-   addListItem: addListItem
+    function addListItem(pokemon) {
+        var button = document.createElement("button");
+        var li = document.createElement("li");
+        button.innerText = pokemon.name;
+        button.classList.add("my-button");
+        li.appendChild(button);
+        ul.appendChild(li);
+        button.addEventListener("click", function(event) {
+            showDetails(pokemon);
+        });
+    }
 
-};
-}
-();
-//console.log(pokemonRepository.getAll());
-//pokemonRepository.add({ name: "Pidgeot" });
-var ul = document.querySelector(".pokemon-list");
+    function loadList(repository) {
+        return fetch(apiUrl).then(function(response) {
+                return response.json();
+            }).then(function(json) {
+                json.results.forEach(function(item) {
+                    var pokemon = {
+                        name: item.name,
+                        detailsUrl: item.url
+                    };
+                    add(pokemon);
+                });
+            })
+            .catch(function(error) {
+                console.error(error);
+            });
+    }
 
-pokemonRepository.getAll().forEach(function(repository){
-pokemonRepository.addListItem(repository);
+    function loadDetails(item) {
+        var url = item.detailsUrl;
+        return fetch(url).then(function(response) {
+            return response.json();
+        }).then(function(details) {
+            // Now we add the details to the item
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = Object.keys(details.types);
+        }).catch(function(error) {
+            console.error(error);
+        });
+    }
+
+    function showDetails(repository) {
+        pokemonRepository.loadDetails(repository).then(function() {
+            console.log(repository);
+        });
+    }
+    return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails
+    };
+})();
+
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });
-
-//var button = document.querySelectorAll("button");
-//for(var i=0; i< button.length; i++){
-//button[i].addEventListener("click",
-//function(repository){
-//console.log(repository.name);
-//});
-
-
-//==== CHANGE  OF POKEMON  NAME COLOR ONCE CLICKED===
-
-/*var button = document.querySelectorAll("button");
-for(var i=0; i< button.length; i++){
-button[i].addEventListener("click",
-function(){
-this.style.color = "green";
-});
-}*/

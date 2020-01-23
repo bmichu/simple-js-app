@@ -1,25 +1,105 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<link
+		href="https://fonts.googleapis.com/css?family=Nunito&display=swap"
+		rel="stylesheet"
+	/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://kit.fontawesome.com/f12967dd11.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<title>Simple JS App</title>
+	</head>
 
-<head>
-  <meta charset="utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <title>Simple JS App</title>
+	<body>
+		<nav id="mainNav" class="navbar navbar-dark expand fixed-top">
+			<div class="container">
+				<a class="navbar-brand"><i class="fas fa-dragon"></i> Find me</a>
+				<form class="form-inline">
+					<input
+						class="form-control mr-sm-2"
+						id="search"
+						type="search"
+						placeholder="Search"
+						aria-label="Search"
+					/>
+				</form>
+			</div>
+		</nav>
+		<section id="header" class="jumbotron">
+			<h1 class="display-3 d-none d-lg-inline mt-4">My Pokedex!</h1>
+		</section>
+		<section>
+			<div class="container">
+				<div class="pokemon-list"></div>
+				<div
+					div class="modal fade"
+					id="pokemon-modal"
+					tabindex="-1"
+					role="dialog"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="pokemon-name"></h5>
+								<button
+									type="button"
+									class="close"
+									data-dismiss="modal"
+									aria-label="Close"
+								>
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" id="pokemon-content"></div>
+								<div class="modal-footer">
+									<button
+										type="button"
+										class="btn btn-secondary btn-sm"
+										data-dismiss="modal"
+									>
+										Close
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"
+		></script>
 
-</head>
-
-<body>
-  <h1 id="title">My Pokedex!</h1>
-  <ul class="pokemon-list">
-  </ul>
-
-  <div id='modal-container'></div>
-
-  <script src="js/promise-polyfill.js"></script>
-  <script src="js/fetch.js"></script>
-  <script src="js/scripts.js"></script>
-</body>
-
+		<script src="js/scripts.js"></script>
+	</body>
 </html>

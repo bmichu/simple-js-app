@@ -1,13 +1,13 @@
 body {
 	text-align: center;
 	padding: auto;
-	font-family: 'Nunito', sans-serif;
+	font-family: "Nunito", sans-serif;
 	background-color: #379683;
 	color: black;
 }
 
 #mainNavbar {
-	font-size: 1.5rem;
+	font-size: 1.5rem
 	font-weight: 100;
 }
 
